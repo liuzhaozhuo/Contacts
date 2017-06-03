@@ -13,6 +13,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
+import cn.gdcjxy.contacts.bean.User;
+import cn.gdcjxy.contacts.dao.UserDao;
+
 /**
  * A login screen that offers login via email/password.
  */
@@ -21,6 +26,10 @@ public class LoginActivity extends AppCompatActivity {
     // UI references.
     private EditText mEmailView;
     private EditText mPasswordView;
+    // 需要适配的数据集合
+    private List<User> list;
+    // 数据库增删改查操作类
+    private UserDao dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +66,10 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(mIntent);
             }
         });
+
+        dao = new UserDao(this);
+        // 从数据库查询出所有数据
+        list = dao.queryAll();
     }
 
 
@@ -99,7 +112,10 @@ public class LoginActivity extends AppCompatActivity {
             focusView.requestFocus();
         } else {
             // TODO 登录
-            Toast.makeText(this, "login", Toast.LENGTH_SHORT).show();
+
+            Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
+            Intent mIntent = new Intent(LoginActivity.this, ContactsListActivity.class);
+            startActivity(mIntent);
         }
     }
 
