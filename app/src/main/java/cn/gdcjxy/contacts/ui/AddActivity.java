@@ -1,7 +1,9 @@
-package cn.gdcjxy.contacts;
+package cn.gdcjxy.contacts.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import cn.gdcjxy.contacts.R;
 
 public class AddActivity extends AppCompatActivity {
 

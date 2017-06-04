@@ -1,4 +1,4 @@
-package cn.gdcjxy.contacts;
+package cn.gdcjxy.contacts.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import cn.gdcjxy.contacts.R;
 import cn.gdcjxy.contacts.bean.User;
 import cn.gdcjxy.contacts.dao.UserDao;
 

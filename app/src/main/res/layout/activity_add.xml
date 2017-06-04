@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="cn.gdcjxy.contacts.AddActivity">
+    tools:context="cn.gdcjxy.contacts.ui.AddActivity">
 
 </android.support.constraint.ConstraintLayout>

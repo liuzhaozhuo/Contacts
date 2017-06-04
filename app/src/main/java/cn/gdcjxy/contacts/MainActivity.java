@@ -18,6 +18,7 @@ import cn.gdcjxy.contacts.fragment.AlterFragment;
 import cn.gdcjxy.contacts.fragment.ContactsFragment;
 import cn.gdcjxy.contacts.fragment.DelFragment;
 import cn.gdcjxy.contacts.fragment.SearchFragment;
+import cn.gdcjxy.contacts.ui.AddActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
