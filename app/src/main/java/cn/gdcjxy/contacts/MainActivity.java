@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -55,11 +56,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initView() {
         fab_add = (FloatingActionButton) findViewById(R.id.fab_add);
         fab_add.setOnClickListener(this);
+        //默认显示
+        fab_add.setVisibility(View.VISIBLE);
         mTabLayout = (TabLayout) findViewById(R.id.mTabLayout);
         mViewPager = (ViewPager) findViewById(R.id.mViewPage);
 
         //预加载
         mViewPager.setOffscreenPageLimit(mFragment.size());
+
+
+        //ViewPager的滑动监听
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                Log.i(TAG, "onPageSelected: "+position);
+                if(position==0){
+                    fab_add.setVisibility(View.VISIBLE);
+                }else {
+                    fab_add.setVisibility(View.GONE);
+                }
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         //设置适配器
         mViewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
