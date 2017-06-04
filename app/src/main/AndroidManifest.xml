@@ -26,19 +26,7 @@
         <activity
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register" />
-        <activity
-            android:name=".ContactsListActivity"
-            android:label="@string/title_contacts_list"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".ContactsDetailActivity"
-            android:label="@string/title_contacts_detail"
-            android:parentActivityName=".ContactsListActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="cn.gdcjxy.contacts.ContactsListActivity" />
-        </activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>

@@ -114,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
             // TODO 登录
 
             Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
-            Intent mIntent = new Intent(LoginActivity.this, ContactsListActivity.class);
+            Intent mIntent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(mIntent);
         }
     }
