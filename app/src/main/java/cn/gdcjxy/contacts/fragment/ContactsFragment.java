@@ -2,7 +2,6 @@ package cn.gdcjxy.contacts.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +14,6 @@ import java.util.List;
 import cn.gdcjxy.contacts.R;
 import cn.gdcjxy.contacts.bean.Contact;
 import cn.gdcjxy.contacts.dao.ContactDao;
-
-import static android.content.ContentValues.TAG;
 
 
 public class ContactsFragment extends Fragment {
@@ -32,7 +29,7 @@ public class ContactsFragment extends Fragment {
 
     @Override
     public void onStart() {
-        //
+        //刷新列表
         list = dao.queryAll();
         adapter = new MyAdapter();
         contacts_list.setAdapter(adapter);// 给ListView添加适配器(自动把数据生成条目)
@@ -42,8 +39,6 @@ public class ContactsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        Log.i(TAG, "onCreateView: ");
         view = inflater.inflate(R.layout.fragment_contacts,container, false);
         if(view!=null){
             initView();
@@ -83,11 +78,13 @@ public class ContactsFragment extends Fragment {
             // 重用convertView
             convertView = convertView != null ? convertView : View.inflate(getActivity(), R.layout.contacts_item, null);
             // 获取该视图中的TextView
+            TextView contacts_id = (TextView) convertView.findViewById(R.id.contacts_id);
             TextView contacts_name = (TextView) convertView.findViewById(R.id.contacts_name);
             TextView contacts_tel = (TextView) convertView.findViewById(R.id.contacts_tel);
             // 根据当前位置获取Account对象
             final Contact a = list.get(position);
             // 把Account对象中的数据放到TextView中
+            contacts_id.setText(a.getId()+"");
             contacts_name.setText(a.getName()+"");
             contacts_tel.setText(a.getTel()+"");
             return convertView;

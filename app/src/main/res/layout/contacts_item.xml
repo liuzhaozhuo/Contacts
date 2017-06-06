@@ -9,10 +9,17 @@
         android:layout_height="70dp"
         android:orientation="horizontal">
 
+        <TextView
+            android:id="@+id/contacts_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp"/>
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_margin="10dp"
             android:src="@mipmap/ic_launcher" />
 
         <LinearLayout
@@ -29,15 +36,17 @@
                     android:id="@+id/tv_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
                     android:text="姓名:"
-                    android:textSize="25dp" />
+                    android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/contacts_name"
                     android:layout_width="wrap_content"
-                    android:layout_height="35dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:textSize="25dp"/>
+                    android:layout_margin="5dp"
+                    android:textSize="20dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -50,15 +59,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_name"
+                    android:layout_marginBottom="5dp"
                     android:text="手机号码:"
-                    android:textSize="20dp" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/contacts_tel"
                     android:layout_width="wrap_content"
-                    android:layout_height="35dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:textSize="20dp"/>
+                    android:layout_marginBottom="5dp"
+                    android:textSize="15dp"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
