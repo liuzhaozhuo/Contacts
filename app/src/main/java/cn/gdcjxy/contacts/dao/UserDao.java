@@ -10,10 +10,6 @@ import java.util.List;
 
 import cn.gdcjxy.contacts.bean.User;
 
-/**
- * Created by Administrator on 2017/6/2.
- */
-
 public class UserDao {
     private MyHelper helper;
     public UserDao(Context context) {
@@ -64,5 +60,18 @@ public class UserDao {
         c.close();
         db.close();
         return list;
+    }
+    //登录验证
+    public  boolean login(String lemail,String lpassword){
+        SQLiteDatabase db = helper.getReadableDatabase();
+        Cursor c = db.rawQuery("select * from user where email='"+lemail+"' and password='"+lpassword+"'",null);
+        while(c.moveToNext()){
+            if((c.getString(1).equals(lemail))&&(c.getString(2).equals(lpassword))){
+                return true;
+            }else {
+                return false;
+            }
+        }
+        return false;
     }
 }

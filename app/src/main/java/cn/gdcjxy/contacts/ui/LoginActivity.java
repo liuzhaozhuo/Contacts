@@ -114,10 +114,14 @@ public class LoginActivity extends AppCompatActivity {
             focusView.requestFocus();
         } else {
             // TODO 登录
+            if(dao.login(email,password)){
+                Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
+                Intent mIntent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(mIntent);
+            }else {
+                Toast.makeText(this, "登录失败，请检查邮箱或密码", Toast.LENGTH_SHORT).show();
+            }
 
-            Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
-            Intent mIntent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(mIntent);
         }
     }
 
