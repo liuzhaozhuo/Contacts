@@ -1,12 +1,12 @@
 package cn.gdcjxy.contacts.fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -14,12 +14,13 @@ import java.util.List;
 import cn.gdcjxy.contacts.R;
 import cn.gdcjxy.contacts.bean.Contact;
 import cn.gdcjxy.contacts.dao.ContactDao;
+import cn.gdcjxy.contacts.ui.ReFlashListView;
 
 
-public class ContactsFragment extends Fragment {
+public class ContactsFragment extends Fragment implements ReFlashListView.IReflashListener {
 
     private View view;
-    private ListView contacts_list;
+    private ReFlashListView contacts_list;
     private MyAdapter adapter;
 
     // 需要适配的数据集合
@@ -27,14 +28,14 @@ public class ContactsFragment extends Fragment {
     // 数据库增删改查操作类
     private ContactDao dao;
 
-    @Override
-    public void onStart() {
-        //刷新列表
-        list = dao.queryAll();
-        adapter = new MyAdapter();
-        contacts_list.setAdapter(adapter);// 给ListView添加适配器(自动把数据生成条目)
-        super.onStart();
-    }
+//    @Override
+//    public void onStart() {
+//        //刷新列表
+//        list = dao.queryAll();
+//        adapter = new MyAdapter();
+//        contacts_list.setAdapter(adapter);// 给ListView添加适配器(自动把数据生成条目)
+//        super.onStart();
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,7 +54,22 @@ public class ContactsFragment extends Fragment {
     }
 
     private void initView() {
-        contacts_list = (ListView) view.findViewById(R.id.contacts_list);
+        contacts_list = (ReFlashListView) view.findViewById(R.id.contacts_list);
+        contacts_list.setInterface(this);
+    }
+
+    @Override
+    public void onReflash() {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                list = dao.queryAll();
+                adapter = new MyAdapter();
+                contacts_list.setAdapter(adapter);// 给ListView添加适配器(自动把数据生成条目)
+                contacts_list.reflashComplete();
+            }
+        },2000);
     }
 
     class MyAdapter extends BaseAdapter {
