@@ -19,6 +19,4 @@
     <string name="title_contacts_list">Contacts</string>
     <string name="title_contacts_detail">Contacts Detail</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
