@@ -1,5 +1,6 @@
 package cn.gdcjxy.contacts.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import cn.gdcjxy.contacts.MainActivity;
 import cn.gdcjxy.contacts.R;
 import cn.gdcjxy.contacts.bean.Contact;
 import cn.gdcjxy.contacts.dao.ContactDao;
@@ -69,6 +71,7 @@ public class AddActivity extends AppCompatActivity {
                     editText_name.setText("");
                     editText_tel.setText("");
                     Toast.makeText(AddActivity.this,"添加联系人成功",Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(AddActivity.this, MainActivity.class));
                 }
             }
         });

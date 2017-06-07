@@ -8,15 +8,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.gdcjxy.contacts.fragment.AlterFragment;
 import cn.gdcjxy.contacts.fragment.ContactsFragment;
-import cn.gdcjxy.contacts.fragment.DelFragment;
 import cn.gdcjxy.contacts.fragment.SearchFragment;
 import cn.gdcjxy.contacts.ui.AddActivity;
 
@@ -44,15 +41,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initData() {
         mTitle = new ArrayList<>();
         mTitle.add("通讯录");
-        mTitle.add("修改");
         mTitle.add("查找");
-        mTitle.add("删除");
 
         mFragment = new ArrayList<>();
         mFragment.add(new ContactsFragment());
-        mFragment.add(new AlterFragment());
         mFragment.add(new SearchFragment());
-        mFragment.add(new DelFragment());
     }
 
     private void initView() {
@@ -76,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onPageSelected(int position) {
-                Log.i(TAG, "onPageSelected: "+position);
                 if(position==0){
                     fab_add.setVisibility(View.VISIBLE);
                 }else {
